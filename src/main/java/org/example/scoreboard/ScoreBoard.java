@@ -33,11 +33,10 @@ public class ScoreBoard {
 
     public void updateScore(Match matchToUpdate, int homeTeamScore, int awayTeamScore) {
         Match match = matches.get(createMatchKey(matchToUpdate));
-        if (match != null) {
-            match.setScore(homeTeamScore, awayTeamScore);
-        } else {
+        if (match == null) {
             throw new IllegalStateException("Match not found");
         }
+        match.setScore(homeTeamScore, awayTeamScore);
     }
 
     private String createMatchKey(Match match) {
